@@ -1,20 +1,27 @@
-import { useState } from "react";
-import { createUser, signInWithForm } from "../../utils/firebase/firebase";
-import Button from "../button/Button";
+import { useState, useContext } from "react";
+import { createUser, createUserWithForm } from "../../utils/firebase/firebase";
 
+import { UserContext } from "../../contexts/user";
+import Button from "../button/Button";
 import FormInput from "../forminput/FormInput";
-import './signupform.scss'
+import "./signupform.scss";
+
+const defaultFormValues = {
+  displayName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const SignUpForm = () => {
-  const defaultFormValues = {
-    displayName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  };
+
+  // ################ hooks ################
 
   const [formValues, setFormValues] = useState(defaultFormValues);
   const { displayName, email, password, confirmPassword } = formValues;
+  const { setCurrentUser } = useContext(UserContext);
+
+  // ################ form methods ################
 
   const resetForm = () => {
     setFormValues(defaultFormValues);
@@ -34,24 +41,35 @@ const SignUpForm = () => {
 
     try {
       // first we let firebase create an authorised user
-      const { user } = await signInWithForm(email, password);
+      const { user } = await createUserWithForm(email, password);
+
       // then we add to document and store in the db
       // append form data we have collected passing any missing info we want
       await createUser(user, { displayName });
 
+      // Set current user in context
+      setCurrentUser(user);
+
       //reset form
       resetForm();
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        alert("Cannot create user, email already in use");
-      } else {
-        console.log(
-          "Error creating user with email and password",
-          error.message
-        );
+      switch (error.code) {
+        case "auth/email-already-in-use":
+          alert("Cannot create user, email already in use");
+          break;
+
+        default:
+          alert("Error creating user with email and password");
+          console.log(
+            "Error creating user with email and password",
+            error.message
+          );
+          break;
       }
     }
   };
+
+  // ################ rendering form ################
 
   return (
     <div className="sign-up-container">
