@@ -5,10 +5,10 @@ import "./product-card.scss";
 
 const ProductCard = ({ product }) => {
   const { imageUrl, name, price } = product;
-  const { setCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   const handleUpdateCart = () => {
-    setCart(true);
+    addToCart(product);
   };
 
   return (
