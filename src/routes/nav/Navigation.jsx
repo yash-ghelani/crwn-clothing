@@ -7,12 +7,7 @@ import { UserContext } from "../../contexts/user";
 import "./navigation.scss";
 
 const Navigation = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  const handleSignOut = async () => {
-    await signOutUser();
-    setCurrentUser(null);
-  }
+  const { currentUser } = useContext(UserContext);
 
   return (
     <>
@@ -27,7 +22,7 @@ const Navigation = () => {
           </Link>
 
           {currentUser ? (
-            <span className="link" onClick={handleSignOut}>Sign Out</span>
+            <span className="link" onClick={signOutUser}>Sign Out</span>
           ) : (
             <Link className="link" to="/accounts">
               Sign In

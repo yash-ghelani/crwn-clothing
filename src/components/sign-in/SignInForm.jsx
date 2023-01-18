@@ -8,7 +8,6 @@ import {
 
 import Button from "../button/Button";
 import FormInput from "../forminput/FormInput";
-import { UserContext } from "../../contexts/user";
 
 import "./signinform.scss";
 
@@ -22,7 +21,6 @@ const SignIn = () => {
 
   const [formValues, setFormValues] = useState(defaultValues);
   const { email, password } = formValues;
-  const { setCurrentUser } = useContext(UserContext);
 
   // ################ form methods ################
 
@@ -41,9 +39,6 @@ const SignIn = () => {
     try {
       // first we let firebase create an authorised user
       const { user } = await signInWithForm(email, password);
-
-      // Set current user in context
-      setCurrentUser(user);
 
       //reset form
       resetForm();
@@ -66,10 +61,9 @@ const SignIn = () => {
 
   const signInWithGoogle = async () => {
     const { user } = await signInWithGooglePopup();
-    const userDocRef = await createUser(user);
 
-    // Set current user in context
-    setCurrentUser(user);
+    // add authenticated user to doc + db
+    createUser(user);
   };
 
   // ################ rendering form ################

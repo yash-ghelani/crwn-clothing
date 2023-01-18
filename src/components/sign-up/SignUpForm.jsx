@@ -1,7 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { createUser, createUserWithForm } from "../../utils/firebase/firebase";
 
-import { UserContext } from "../../contexts/user";
 import Button from "../button/Button";
 import FormInput from "../forminput/FormInput";
 import "./signupform.scss";
@@ -19,7 +18,6 @@ const SignUpForm = () => {
 
   const [formValues, setFormValues] = useState(defaultFormValues);
   const { displayName, email, password, confirmPassword } = formValues;
-  const { setCurrentUser } = useContext(UserContext);
 
   // ################ form methods ################
 
@@ -46,9 +44,6 @@ const SignUpForm = () => {
       // then we add to document and store in the db
       // append form data we have collected passing any missing info we want
       await createUser(user, { displayName });
-
-      // Set current user in context
-      setCurrentUser(user);
 
       //reset form
       resetForm();

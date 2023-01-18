@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -29,17 +30,23 @@ provider.setCustomParameters({
   prompt: "select_account",
 });
 
-// ############# Sign in methods ###############
+// ############# auth generation ###############
 export const auth = getAuth();
 
+// ############# Sign in methods ###############
+
 // signing in with google
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = async () => {
+  await signInWithPopup(auth, provider);
+}
 
 // sign in auth user with form
 export const signInWithForm = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
+
+// ############# Sign up methods ###############
 
 // create auth user with form
 export const createUserWithForm = async (email, password) => {
@@ -52,15 +59,20 @@ export const signOutUser = async () => {
   await signOut(auth);
 };
 
+// ############# observer/listeners ###############
+
+export const onAuthStateChangedListener = (callback) => {
+  onAuthStateChanged(auth, callback)
+}
+
 // ############# Firestore DB #############
 export const db = getFirestore();
 
 // create user in db
 export const createUser = async (userAuth, extraUserData = {}) => {
+
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log("DOCREF:", userDocRef);
   const userSnapshot = await getDoc(userDocRef);
-  console.log("SNAPSHOT", userSnapshot);
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
