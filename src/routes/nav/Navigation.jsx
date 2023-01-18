@@ -1,13 +1,20 @@
 import { useContext } from "react";
-import { signOutUser } from "../../utils/firebase/firebase";
 import { Outlet, Link } from "react-router-dom";
-import { ReactComponent as Crown } from "../../assets/crown.svg";
-import { UserContext } from "../../contexts/user";
 
+import { signOutUser } from "../../utils/firebase/firebase";
+
+import { UserContext } from "../../contexts/user";
+import { CartContext } from "../../contexts/cart";
+
+import Cart from "../../components/cart/Cart";
+import CartDropdown from "../../components/cart-dropdown/CartDropdown";
+
+import { ReactComponent as Crown } from "../../assets/crown.svg";
 import "./navigation.scss";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
+  const { cart } = useContext(CartContext);
 
   return (
     <>
@@ -22,13 +29,19 @@ const Navigation = () => {
           </Link>
 
           {currentUser ? (
-            <span className="link" onClick={signOutUser}>Sign Out</span>
+            <span className="link" onClick={signOutUser}>
+              Sign Out
+            </span>
           ) : (
             <Link className="link" to="/accounts">
               Sign In
             </Link>
           )}
+
+          <Cart />
         </div>
+
+        {cart && <CartDropdown />}
       </div>
 
       <Outlet />
