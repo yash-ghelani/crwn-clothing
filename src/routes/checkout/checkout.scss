@@ -1,0 +1,24 @@
+.checkout-products-container {
+  margin: auto;
+  max-width: 700px;
+
+  .checkout-column-titles {
+    display: flex;
+    justify-content: center;
+
+    .column-title {
+      padding: 5px;
+      width: 23%;
+
+      &:last-child {
+        width: 8%;
+      }
+    }
+  }
+
+  .checkout-total {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 36px;
+  }
+}
