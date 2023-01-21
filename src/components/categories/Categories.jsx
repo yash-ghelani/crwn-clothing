@@ -1,7 +1,8 @@
-import React from 'react'
-import CategoryItem from '../category-item/CategoryItem';
+import React from "react";
+import CategoryItem from "../category-item/CategoryItem";
+import "./categories.scss";
 
-const Categories = ({categories}) => {
+const Categories = ({ categories }) => {
   return (
     <div className="categories-container">
       {categories.map(({ title, id, imageUrl }) => (
@@ -9,6 +10,6 @@ const Categories = ({categories}) => {
       ))}
     </div>
   );
-}
+};
 
-export default Categories
+export default Categories;
