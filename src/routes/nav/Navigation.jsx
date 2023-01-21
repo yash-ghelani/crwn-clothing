@@ -10,7 +10,8 @@ import Cart from "../../components/cart/Cart";
 import CartDropdown from "../../components/cart-dropdown/CartDropdown";
 
 import { ReactComponent as Crown } from "../../assets/crown.svg";
-import "./navigation.scss";
+import {NavigationContainer, NavLink, NavLinks, LogoContainer} from './navigation.style.jsx'
+import "./navigation.style";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -18,31 +19,25 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="navigation">
-        <Link className="logo-link" to="/">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <Crown className="logo" />
-        </Link>
+        </LogoContainer>
 
-        <div className="links">
-          <Link className="link" to="/shop">
-            Shop
-          </Link>
+        <NavLinks>
+          <NavLink to="/shop">Shop</NavLink>
 
           {currentUser ? (
-            <span className="link" onClick={signOutUser}>
-              Sign Out
-            </span>
+            <NavLink as='span' onClick={signOutUser}>Sign Out</NavLink>
           ) : (
-            <Link className="link" to="/accounts">
-              Sign In
-            </Link>
+            <NavLink to="/accounts">Sign In</NavLink>
           )}
 
           <Cart />
-        </div>
+        </NavLinks>
 
         {cart && <CartDropdown />}
-      </div>
+      </NavigationContainer>
 
       <Outlet />
     </>
