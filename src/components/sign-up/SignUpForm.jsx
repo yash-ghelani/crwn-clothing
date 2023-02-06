@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createUser, createUserWithForm } from "../../utils/firebase/firebase";
 
-import Button from "../button/Button";
+import Button, {BUTTON_TYPES} from "../button/Button";
 import FormInput from "../forminput/FormInput";
 import "./signupform.scss";
 
@@ -102,7 +102,7 @@ const SignUpForm = () => {
           onChange={handleChange}
           required
         />
-        <Button type="submit">Sign Up</Button>
+        <Button buttonType={BUTTON_TYPES.base} type="submit">Sign Up</Button>
       </form>
     </div>
   );

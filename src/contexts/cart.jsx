@@ -69,7 +69,6 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     setCartCount(
       cartItems.reduce((count, cartItem) => {
-        console.log(count + cartItem.quantity);
         return (count + cartItem.quantity);
       }, 0)
     );

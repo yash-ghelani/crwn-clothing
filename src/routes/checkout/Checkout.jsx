@@ -35,7 +35,7 @@ const Checkout = () => {
       ))}
 
       <div className="checkout-total">
-        <span className="total">Total: £{cartTotal} {console.log(cartTotal)}</span>
+        <span className="total">Total: £{cartTotal}</span>
       </div>
     </div>
   );

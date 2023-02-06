@@ -16,6 +16,7 @@ const CategoryPreview = ({ title, products }) => {
       <h2>
         <span onClick={handleGoToCategory} className="title">{title.toUpperCase()}</span>
       </h2>
+
       <div className="preview">
         {products
           .filter((_, index) => index < 4)
