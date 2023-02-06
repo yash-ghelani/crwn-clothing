@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import {
   signInWithGooglePopup,
@@ -9,7 +9,7 @@ import {
 import Button, { BUTTON_TYPES } from "../button/Button";
 import FormInput from "../forminput/FormInput";
 
-import "./signinform.scss";
+import {SignInContainer, FormButtons} from './signinform.style'
 
 const SignIn = () => {
   const defaultValues = {
@@ -69,7 +69,7 @@ const SignIn = () => {
   // ################ rendering form ################
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Already have an account?</h2>
 
       <form onSubmit={handleSubmit}>
@@ -91,14 +91,18 @@ const SignIn = () => {
           required
         />
 
-        <div className="form-buttons">
+        <FormButtons>
           <Button type="submit"> Sign In</Button>
-          <Button type="button" buttonType={BUTTON_TYPES.google} onClick={signInWithGoogle}>
+          <Button
+            type="button"
+            buttonType={BUTTON_TYPES.google}
+            onClick={signInWithGoogle}
+          >
             Google sign in
           </Button>
-        </div>
+        </FormButtons>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 

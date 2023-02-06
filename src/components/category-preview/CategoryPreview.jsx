@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../../components/product-card/ProductCard";
-import "./category-preview.scss";
+import { CategoryPreviewContainer, Title, Preview } from "./category-preview.style"
 
 const CategoryPreview = ({ title, products }) => {
 
@@ -12,19 +12,19 @@ const CategoryPreview = ({ title, products }) => {
   }
 
   return (
-    <div className="category-preview-container">
+    <CategoryPreviewContainer>
       <h2>
-        <span onClick={handleGoToCategory} className="title">{title.toUpperCase()}</span>
+        <Title onClick={handleGoToCategory}>{title.toUpperCase()}</Title>
       </h2>
 
-      <div className="preview">
+      <Preview>
         {products
           .filter((_, index) => index < 4)
           .map((product) => (
             <ProductCard key={product.id} product={product}></ProductCard>
           ))}
-      </div>
-    </div>
+      </Preview>
+    </CategoryPreviewContainer>
   );
 };
 

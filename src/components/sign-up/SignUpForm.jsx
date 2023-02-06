@@ -3,7 +3,7 @@ import { createUser, createUserWithForm } from "../../utils/firebase/firebase";
 
 import Button, {BUTTON_TYPES} from "../button/Button";
 import FormInput from "../forminput/FormInput";
-import "./signupform.scss";
+import { SignUpContainer } from "./signupform.style";
 
 const defaultFormValues = {
   displayName: "",
@@ -67,7 +67,7 @@ const SignUpForm = () => {
   // ################ rendering form ################
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Don't have an account?</h2>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -102,9 +102,11 @@ const SignUpForm = () => {
           onChange={handleChange}
           required
         />
-        <Button buttonType={BUTTON_TYPES.base} type="submit">Sign Up</Button>
+        <Button buttonType={BUTTON_TYPES.base} type="submit">
+          Sign Up
+        </Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

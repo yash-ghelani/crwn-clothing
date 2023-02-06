@@ -1,4 +1,6 @@
-.sign-in-container {
+import styled from "styled-components";
+
+export const SignInContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -9,9 +11,9 @@
   h2 {
     margin: 10px 0;
   }
+`;
 
-  .form-buttons {
-    display: flex;
-    justify-content: space-around;
-  }
-}
+export const FormButtons = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
