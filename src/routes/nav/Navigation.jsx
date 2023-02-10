@@ -15,7 +15,7 @@ import "./navigation.style";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { cart } = useContext(CartContext);
+  const { cartToggle } = useContext(CartContext);
 
   return (
     <>
@@ -36,7 +36,7 @@ const Navigation = () => {
           <Cart />
         </NavLinks>
 
-        {cart && <CartDropdown />}
+        {cartToggle && <CartDropdown />}
       </NavigationContainer>
 
       <Outlet />

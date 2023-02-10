@@ -3,14 +3,14 @@ import { CartContext } from "../../contexts/cart";
 import { CartContainer, CartIcon, ItemCount } from "./cart.style";
 
 const Cart = () => {
-  const { cart, setCart, cartCount } = useContext(CartContext);
+  const { cartToggle, toggleCart, cartCount } = useContext(CartContext);
 
-  const toggleCart = () => {
-    setCart(!cart)
+  const handleToggleCart = () => {
+    toggleCart(!cartToggle)
   }
 
   return (
-    <CartContainer onClick={toggleCart}>
+    <CartContainer onClick={handleToggleCart}>
       <CartIcon/>
       <ItemCount>{cartCount}</ItemCount>
     </CartContainer>
