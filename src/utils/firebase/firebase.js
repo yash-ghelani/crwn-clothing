@@ -46,7 +46,7 @@ export const auth = getAuth();
 
 // signing in with google
 export const signInWithGooglePopup = async () => {
-  await signInWithPopup(auth, provider);
+  return await signInWithPopup(auth, provider);
 };
 
 // sign in auth user with form
