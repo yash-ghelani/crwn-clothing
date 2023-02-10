@@ -17,11 +17,12 @@ export const BaseButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  transition: 0.5s;
 
   &:hover {
     background-color: white;
     color: black;
-    border: 1px solid black;
+    border: 0.5px solid black;
   }
 `;
 
@@ -33,7 +34,7 @@ export const GoogleSignInButton = styled(BaseButton)`
     background-color: white;
     color: #4285f4;
     border: none;
-    border: 1px solid #4285f4;
+    border: 0.5px solid #4285f4;
   }
 `;
 
