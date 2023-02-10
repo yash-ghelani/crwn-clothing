@@ -5,8 +5,8 @@ export const BackgroundImage = styled.div`
   height: 100%;
   background-size: cover;
   background-position: center;
-  background-image: ${({imageUrl}) => `url(${imageUrl})`};
-`
+  background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+`;
 
 export const Body = styled.div`
   height: 90px;
@@ -32,7 +32,7 @@ export const Body = styled.div`
     font-weight: lighter;
     font-size: 16px;
   }
-`
+`;
 
 export const CategoryContainer = styled.div`
   min-width: 30%;
@@ -48,7 +48,7 @@ export const CategoryContainer = styled.div`
   &:hover {
     cursor: pointer;
 
-    & ${BackgroundImage}{
+    & ${BackgroundImage} {
       transform: scale(1.1);
       transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     }
@@ -65,5 +65,4 @@ export const CategoryContainer = styled.div`
   &:last-child {
     margin-left: 7.5px;
   }
-
-`
+`;
