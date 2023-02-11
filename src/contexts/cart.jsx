@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect, useReducer } from "react";
+import { createContext, useReducer } from "react";
+import { createAction } from "../utils/reducer/reducer";
 
 // This is the context object
 // the fields are simply the useState value and setter
@@ -53,15 +54,7 @@ export const CART_ACTION_TYPES = {
 
 const INITIAL_STATE = {
   cartToggle: false,
-  cartItems: [
-    {
-      id: 4,
-      name: "Grey Brim",
-      imageUrl: "https://i.ibb.co/RjBLWxB/grey-brim.png",
-      price: 25,
-      quantity: 1,
-    },
-  ],
+  cartItems: [],
   cartCount: 0,
   cartTotal: 0,
 };
@@ -95,10 +88,10 @@ export const CartProvider = ({ children }) => {
     useReducer(cartReducer, INITIAL_STATE);
 
   const toggleCart = (flag) => {
-    dispatch({ type: CART_ACTION_TYPES.TOGGLE_CART, payload: flag });
+    dispatch(createAction(CART_ACTION_TYPES.TOGGLE_CART, flag));
   };
 
-  const updateCart = (newCartItems) => {
+  const updateCartItems = (newCartItems) => {
     const newCartCount = newCartItems.reduce((count, cartItem) => {
       return count + cartItem.quantity;
     }, 0);
@@ -108,54 +101,28 @@ export const CartProvider = ({ children }) => {
       return total + cartItem.quantity * cartItem.price;
     }, 0);
 
-    return { newCartCount, newCartTotal };
-  };
-
-  const updateCartItems = (newCartItems) => {
-    const { newCartCount, newCartTotal } = updateCart(newCartItems);
-    dispatch({
-      type: CART_ACTION_TYPES.UPDATE_CART,
-      payload: {
+    const payload = {
         cartItems: newCartItems,
         cartCount: newCartCount,
         cartTotal: newCartTotal,
-      },
-    });
+      }
+
+    dispatch(createAction(CART_ACTION_TYPES.UPDATE_CART, payload));
   };
 
   const addToCart = (newProduct) => {
     const newCartItems = handleAddToCart(cartItems, newProduct);
     updateCartItems(newCartItems);
-    console.log(
-      "added item to cart! cartCount: ",
-      cartCount,
-      "cartTotal: ",
-      cartTotal,
-      "cartItems: ",
-      cartItems
-    );
   };
 
   const removeFromCart = (oldProduct) => {
     const newCartItems = handleRemoveFromCart(cartItems, oldProduct);
     updateCartItems(newCartItems);
-    console.log(
-      "removed item from cart! cartCount: ",
-      cartCount,
-      "cartTotal",
-      cartTotal
-    );
   };
 
   const deleteFromCart = (oldProduct) => {
     const newCartItems = handleDeleteFromCart(cartItems, oldProduct);
     updateCartItems(newCartItems);
-    console.log(
-      "deleted item from cart! cartCount: ",
-      cartCount,
-      "cartTotal",
-      cartTotal
-    );
   };
 
   const value = {
