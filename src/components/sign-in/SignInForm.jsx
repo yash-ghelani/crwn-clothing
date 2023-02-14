@@ -38,7 +38,7 @@ const SignIn = () => {
 
     try {
       // first we let firebase create an authorised user
-      const { user } = await signInWithForm(email, password);
+      await signInWithForm(email, password);
 
       //reset form
       resetForm();
