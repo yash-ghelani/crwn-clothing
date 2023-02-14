@@ -1,17 +1,17 @@
 import { useSelector } from "react-redux";
 
-import { selectCategoryMap } from "../../store/category/category-selector";
+import { selectCategoriesMap } from "../../store/categories/categories-selector";
 import CategoryPreview from "../../components/category-preview/CategoryPreview";
 
 const CategoriesPreview = () => {
 
   // const categoryMap = useSelector(state => state.category.categoryMap);
-  const categoryMap = useSelector(selectCategoryMap);
+  const categoriesMap = useSelector(selectCategoriesMap);
 
   return (
     <>
-      {Object.keys(categoryMap).map((title) => {
-        const products = categoryMap[title];
+      {Object.keys(categoriesMap).map((title) => {
+        const products = categoriesMap[title];
         return (
           <CategoryPreview key={title} title={title} products={products} />
         );
