@@ -1,3 +1,3 @@
 export const selectCurrentUser = (state) => {
-  return state.user.currentUser;
+  return state.user_state.currentUser;
 };
