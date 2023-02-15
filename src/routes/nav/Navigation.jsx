@@ -1,23 +1,22 @@
-import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { signOutUser } from "../../utils/firebase/firebase";
-import { CartContext } from "../../contexts/cart";
 import { selectCurrentUser } from "../../store/user/user-selector";
+import { selectCartToggle } from "../../store/cart/cart-selector";
 
 import Cart from "../../components/cart/Cart";
 import CartDropdown from "../../components/cart-dropdown/CartDropdown";
 
 import { ReactComponent as Crown } from "../../assets/crown.svg";
-import {NavigationContainer, NavLink, NavLinks, LogoContainer} from './navigation.style.jsx'
-import "./navigation.style";
+import {NavigationContainer, NavLink, NavLinks, LogoContainer} from './navigation.style'
 
 const Navigation = () => {
 
   // const currentUser = useSelector(state => state.user.currentUser);
   const currentUser = useSelector(selectCurrentUser);
-  const { cartToggle } = useContext(CartContext);
+
+  const cartToggle = useSelector(selectCartToggle)
 
   return (
     <>

@@ -1,12 +1,18 @@
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart";
+import { useDispatch, useSelector } from "react-redux";
+
+import { toggleCart } from "../../store/cart/cart-action";
+import { selectCartCount, selectCartToggle } from "../../store/cart/cart-selector";
+
 import { CartContainer, CartIcon, ItemCount } from "./cart.style";
 
 const Cart = () => {
-  const { cartToggle, toggleCart, cartCount } = useContext(CartContext);
+
+  const dispatch = useDispatch();
+  const cartToggle = useSelector(selectCartToggle);
+  const cartCount = useSelector(selectCartCount);
 
   const handleToggleCart = () => {
-    toggleCart(!cartToggle)
+    dispatch(toggleCart(!cartToggle))
   }
 
   return (
