@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { toggleCart } from "../../store/cart/cart-action";
 import { selectCartItems } from "../../store/cart/cart-selector";
@@ -17,11 +17,11 @@ import {
 const CartDropdown = () => {
 
   const cartItems = useSelector(selectCartItems)
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleGoToCheckout = () => {
-    toggleCart(false);
+    dispatch(toggleCart(false));
     navigate("/checkout");
   };
 

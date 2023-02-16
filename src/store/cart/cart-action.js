@@ -43,15 +43,18 @@ export const toggleCart = (flag) => {
 
 export const addToCart = (cartItems, newProduct) => {
   const newCartItems = handleAddToCart(cartItems, newProduct);
-  return { type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: newCartItems };
+  const payload = { cartItems: newCartItems }
+  return { type: CART_ACTION_TYPES.SET_CART_ITEMS, payload };
 };
 
 export const removeFromCart = (cartItems, oldProduct) => {
   const newCartItems = handleRemoveFromCart(cartItems, oldProduct);
-  return { type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: newCartItems };
+  const payload = { cartItems: newCartItems };
+  return { type: CART_ACTION_TYPES.SET_CART_ITEMS, payload };
 };
 
 export const deleteFromCart = (cartItems, oldProduct) => {
   const newCartItems = handleDeleteFromCart(cartItems, oldProduct);
-  return { type: CART_ACTION_TYPES.SET_CART_ITEMS, payload: newCartItems };
+  const payload = { cartItems: newCartItems };
+  return { type: CART_ACTION_TYPES.SET_CART_ITEMS, payload };
 };
