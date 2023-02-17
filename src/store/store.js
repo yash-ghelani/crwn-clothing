@@ -1,13 +1,14 @@
 import { compose, createStore, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk"
 
 import logger from "redux-logger";
 import { rootReducer } from "./root-reducer";
 
 // middlewares are small libraries/logic
 // applied before actions hit the reducers
-const middlewares = [process.env.NODE_ENV !== "production" && logger].filter(
+const middlewares = [process.env.NODE_ENV !== "production" && logger, thunk].filter(
   Boolean
 );
 
@@ -22,7 +23,7 @@ const composedEnhancers = composeEnhancer(applyMiddleware(...middlewares));
 const persistConfig = {
   key: "root", // where to start - root means start from the top
   storage, // will use localStorage in the browser
-  blacklist: ["user"], // values we dont want to persist
+  whitelist: ["cart"], // values we dont want to persist
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

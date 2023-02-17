@@ -22,3 +22,8 @@ export const selectCategoriesMap = createSelector(
     }, {});
   }
 );
+
+export const selectIsLoading = createSelector(
+  [selectCategoriesState],
+  (categories_state) => categories_state.isLoading
+);
