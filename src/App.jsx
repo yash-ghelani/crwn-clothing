@@ -4,7 +4,7 @@ import Navigation from "./routes/nav/Navigation";
 import { useDispatch } from "react-redux";
 
 import { onAuthStateChangedListener, createUser } from "./utils/firebase/firebase";
-import { setCurrentUser } from "./store/user/user-action";
+import { setCurrentUser } from "./store/user/user-reducer";
 
 import Home from "./routes/home/Home";
 import Shop from "./routes/shop/Shop";
@@ -20,7 +20,6 @@ function App() {
       if (user) {
         createUser(user);
       }
-      // dispatch({type: USER_ACTION_TYPES.SET_CURRENT_USER, payload: user})
       dispatch(setCurrentUser(user));
     });
 
