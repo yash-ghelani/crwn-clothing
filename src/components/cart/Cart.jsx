@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { toggleCart } from "../../store/cart/cart-action";
+import { toggleCart } from "../../store/cart/cart-reducer";
 import { selectCartCount, selectCartToggle } from "../../store/cart/cart-selector";
 
 import { CartContainer, CartIcon, ItemCount } from "./cart.style";

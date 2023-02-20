@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { toggleCart } from "../../store/cart/cart-action";
+import { toggleCart } from "../../store/cart/cart-reducer";
 import { selectCartItems } from "../../store/cart/cart-selector";
 
 import CartItem from "../cart-item/CartItem";
