@@ -17,6 +17,7 @@ export const BaseButton = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
+  align-items: center;
   transition: 0.5s;
 
   &:hover {
@@ -49,3 +50,18 @@ export const InvertedButton = styled(BaseButton)`
     border: none;
   }
 `;
+
+export const Spinner = styled.div`
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(195, 195, 195, 0.6);
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  border-top-color: #676767;
+  @keyframes spin {
+    to{
+      transform: rotate(360deg);
+    }
+  }
+`
