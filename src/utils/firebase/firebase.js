@@ -96,10 +96,14 @@ export const addCollectionAndDocuments = async (
 };
 
 export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, "categories");
-  const q = query(collectionRef);
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+  try {
+    const collectionRef = collection(db, "categories");
+    const q = query(collectionRef);
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+  } catch (error) {
+    console.log("Error fetching categories", error.message);
+  }
 };
 
 // create user in db

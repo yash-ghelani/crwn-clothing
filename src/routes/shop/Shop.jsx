@@ -16,7 +16,7 @@ const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getCategoriesMap = async () => {
+    const fetchCategoriesMap = async () => {
 
       try {
         dispatch(setCategoriesStart());
@@ -24,12 +24,11 @@ const Shop = () => {
         dispatch(setCategoriesSuccess(categoriesArray));
       } catch (error) {
         dispatch(setCategoriesFailure());
+        alert(error.message);
       }
-
-
     };
 
-    getCategoriesMap();
+    fetchCategoriesMap();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
