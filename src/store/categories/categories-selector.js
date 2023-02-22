@@ -10,6 +10,13 @@ export const selectCategories = createSelector(
   (categories_state) => categories_state.categories
 );
 
+export const selectCategoriesIsLoading = createSelector(
+  // input selector - checks if categories are loading
+  [selectCategoriesState],
+  // output selector - fetches new state if it is different
+  (categories_state) => categories_state.isLoading
+);
+
 export const selectCategoriesMap = createSelector(
   // input selector - checks if categories have changed
   [selectCategories],

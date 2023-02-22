@@ -3,7 +3,11 @@ import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import { getCategoriesAndDocuments } from "../../utils/firebase/firebase";
-import { setCategories } from "../../store/categories/categories-reducer";
+import {
+  setCategoriesStart,
+  setCategoriesSuccess,
+  setCategoriesFailure,
+} from "../../store/categories/categories-reducer";
 import CategoriesPreview from "../categories-preview/CategoriesPreview";
 import Category from "../../components/category/Category";
 
@@ -13,20 +17,26 @@ const Shop = () => {
 
   useEffect(() => {
     const getCategoriesMap = async () => {
-      const categoriesArray = await getCategoriesAndDocuments("categories");
 
-      // dispatch({type: CATEGORY_ACTION_TYPES.SET_CATEGORY_MAP, payload: categoryMap})
-      dispatch(setCategories(categoriesArray));
+      try {
+        dispatch(setCategoriesStart());
+        const categoriesArray = await getCategoriesAndDocuments("categories");
+        dispatch(setCategoriesSuccess(categoriesArray));
+      } catch (error) {
+        dispatch(setCategoriesFailure());
+      }
+
+
     };
 
     getCategoriesMap();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Routes>
-      <Route index element={<CategoriesPreview/>}/>
-      <Route path=":category" element={<Category/>}/>
+      <Route index element={<CategoriesPreview />} />
+      <Route path=":category" element={<Category />} />
     </Routes>
   );
 };
