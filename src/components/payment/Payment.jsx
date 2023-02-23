@@ -13,7 +13,7 @@ const Payment = () => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {setOpen(false); paymentHandler();};
 
   const stripe = useStripe();
   const elements = useElements();
@@ -74,7 +74,6 @@ const Payment = () => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Card Payment</DialogTitle>
         <DialogContent>
-          {/* <DialogContentText>Your total is: £{amount}</DialogContentText> */}
           <CardElement />
         </DialogContent>
         <DialogActions>
