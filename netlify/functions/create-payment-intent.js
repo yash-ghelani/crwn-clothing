@@ -7,15 +7,15 @@ exports.handler = async (event) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: "gbp",
-      payment_method_types: ["card"],
-    })
+      automatic_payment_methods: { enabled: true },
+    });
 
     return {
       statusCode: 200,
       body: JSON.stringify({paymentIntent}),
     };
   } catch (error) {
-    console.log(`create-payment-intent.js:18 ~ exports.handler= ~ error`, error);
+    console.log("Error creating payment intent: ", error);
 
     return {
       statusCode: 400,
