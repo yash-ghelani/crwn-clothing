@@ -26,7 +26,7 @@ export const CheckoutTotal = styled.div`
   margin: 20px 0;
 `;
 
-export const PaymentButton = styled.div`
+export const PaymentButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 `;

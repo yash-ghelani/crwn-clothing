@@ -9,21 +9,6 @@ export const ProductCardContainer = styled.div`
   position: relative;
   min-width: 200px;
 
-  img {
-    width: 100%;
-    height: 95%;
-    object-fit: cover;
-    margin-bottom: 5px;
-  }
-
-  button {
-    width: 80%;
-    opacity: 0.7;
-    position: absolute;
-    top: 255px;
-    display: none;
-  }
-
   &:hover {
     img {
       opacity: 0.8;
@@ -33,6 +18,22 @@ export const ProductCardContainer = styled.div`
       opacity: 0.85;
       display: flex;
     }
+  }
+
+  img {
+    width: 100%;
+    height: 95%;
+    object-fit: cover;
+    margin-bottom: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  button {
+    width: 80%;
+    opacity: 0.7;
+    position: absolute;
+    top: 255px;
+    display: none;
   }
 `;
 

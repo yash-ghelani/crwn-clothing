@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
         <ProductName>{name}</ProductName>
         <ProductPrice>{price}</ProductPrice>
       </ProductFooter>
-      <Button buttonType={BUTTON_TYPES.base} onClick={handleUpdateCart}>
+      <Button variant="outlined" onClick={handleUpdateCart}>
         Add to cart
       </Button>
     </ProductCardContainer>

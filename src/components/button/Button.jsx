@@ -3,6 +3,7 @@ import {
   BaseButton,
   InvertedButton,
   GoogleSignInButton,
+  PaymentButton,
   Spinner,
 } from "./button.style";
 
@@ -10,6 +11,7 @@ export const BUTTON_TYPES = {
   base: BaseButton,
   google: GoogleSignInButton,
   inverted: InvertedButton,
+  payment: PaymentButton,
 };
 
 const Button = ({

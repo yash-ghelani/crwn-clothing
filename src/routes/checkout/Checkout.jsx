@@ -12,7 +12,7 @@ import {
   CheckoutColumnTitles,
   ColumnTitle,
   CheckoutTotal,
-  PaymentButton,
+  PaymentButtonContainer,
 } from "./checkout.style";
 import Payment from "../../components/payment/Payment";
 
@@ -49,9 +49,9 @@ const Checkout = () => {
       <CheckoutTotal>
         <span>Total: £{cartTotal}</span>
       </CheckoutTotal>
-      <PaymentButton>
+      <PaymentButtonContainer>
         <Payment />
-      </PaymentButton>
+      </PaymentButtonContainer>
     </CheckoutProductsContainer>
   );
 };

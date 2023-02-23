@@ -1,26 +1,30 @@
 import styled from "styled-components";
+import { Button } from "@mui/material";
 
-export const BaseButton = styled.button`
-  min-width: 165px;
-  width: auto;
-  height: 50px;
-  letter-spacing: 0.5px;
-  line-height: 50px;
-  padding: 0 25px;
-  font-size: 15px;
-  background-color: black;
-  color: white;
-  text-transform: uppercase;
-  font-family: "Roboto Condensed";
-  font-weight: bolder;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.5s;
+export const BaseButton = styled(Button)`
+  && {
+    min-width: 165px;
+    width: auto;
+    height: 50px;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 25px;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed";
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    opacity: 0.9;
+  }
 
-  &:hover {
+  &&:hover {
     background-color: white;
     color: black;
     border: 0.5px solid black;
@@ -51,6 +55,11 @@ export const InvertedButton = styled(BaseButton)`
   }
 `;
 
+export const PaymentButton = styled(BaseButton)`
+  
+  width: 50%;
+`;
+
 export const Spinner = styled.div`
   display: inline-block;
   width: 30px;
@@ -60,8 +69,8 @@ export const Spinner = styled.div`
   animation: spin 1s ease-in-out infinite;
   border-top-color: #676767;
   @keyframes spin {
-    to{
+    to {
       transform: rotate(360deg);
     }
   }
-`
+`;
