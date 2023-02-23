@@ -1,14 +1,20 @@
-import {useState} from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import { selectCartTotal } from "../../store/cart/cart-selector";
 import { selectCurrentUser } from "../../store/user/user-selector";
 
 import Button, { BUTTON_TYPES } from "../button/Button";
-import { PaymentFormContainer, FormContainer } from "./payment-style";
+import { PaymentFormContainer } from "./payment-style";
 
 const Payment = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const stripe = useStripe();
   const elements = useElements();
   const amount = useSelector(selectCartTotal);
@@ -16,6 +22,7 @@ const Payment = () => {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const paymentHandler = async (e) => {
+    console.log(`🚀 ~ file: Payment.jsx:19 ~ paymentHandler ~ e`, e);
     e.preventDefaut();
 
     if (!stripe || !elements) return;
@@ -30,7 +37,7 @@ const Payment = () => {
 
     console.log(response);
 
-    const client_secret = response.paymentIntent.client_secret
+    const client_secret = response.paymentIntent.client_secret;
 
     console.log(`client_secret`, client_secret);
 
@@ -38,30 +45,43 @@ const Payment = () => {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: currentUser ? currentUser.displayName : 'Guest',
-        }
+          name: currentUser ? currentUser.displayName : "Guest",
+        },
       },
-    })
+    });
 
     setIsProcessingPayment(false);
 
     if (paymentResult.error) {
-      alert(paymentResult.error)
+      alert(paymentResult.error);
     } else {
-      if (paymentResult.paymentIntent.status === 'succeeded') {
-        alert('Payment successful!')
+      if (paymentResult.paymentIntent.status === "succeeded") {
+        alert("Payment successful!");
       }
     }
-
   };
 
   return (
     <PaymentFormContainer>
-      <FormContainer onSubmit={paymentHandler}>
-        <h2>Card Payment</h2>
-        <CardElement />
-        <Button isLoading={isProcessingPayment} buttonType={BUTTON_TYPES.inverted}> Pay Now </Button>
-      </FormContainer>
+      <Button
+        isLoading={isProcessingPayment}
+        buttonType={BUTTON_TYPES.base}
+        onClick={handleOpen}
+      >
+        Pay Now
+      </Button>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Card Payment</DialogTitle>
+        <DialogContent>
+          {/* <DialogContentText>Your total is: £{amount}</DialogContentText> */}
+          <CardElement />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Pay</Button>
+        </DialogActions>
+      </Dialog>
     </PaymentFormContainer>
   );
 };

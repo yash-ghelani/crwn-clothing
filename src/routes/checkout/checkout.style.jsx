@@ -22,5 +22,11 @@ export const ColumnTitle = styled.div`
 export const CheckoutTotal = styled.div`
   display: flex;
   justify-content: flex-end;
-  font-size: 36px;
+  font-size: 42px;
+  margin: 20px 0;
+`;
+
+export const PaymentButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;
