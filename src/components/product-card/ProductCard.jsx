@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 
 import { addToCart } from "../../store/cart/cart-reducer";
 
-import Button, { BUTTON_TYPES } from "../button/Button";
+import Button from "../button/Button";
 import {
   ProductCardContainer,
   ProductFooter,
@@ -26,7 +26,7 @@ const ProductCard = ({ product }) => {
         <ProductName>{name}</ProductName>
         <ProductPrice>{price}</ProductPrice>
       </ProductFooter>
-      <Button variant="outlined" onClick={handleUpdateCart}>
+      <Button onClick={handleUpdateCart}>
         Add to cart
       </Button>
     </ProductCardContainer>

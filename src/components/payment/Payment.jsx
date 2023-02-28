@@ -10,27 +10,30 @@ import Button, { BUTTON_TYPES } from "../button/Button";
 import { PaymentFormContainer } from "./payment-style";
 
 const Payment = () => {
-  const [open, setOpen] = useState(false);
 
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false); paymentHandler();};
+  const handleClose = () => setOpen(false);
 
   const stripe = useStripe();
   const elements = useElements();
+
   const amount = useSelector(selectCartTotal);
   const currentUser = useSelector(selectCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const paymentHandler = async (e) => {
-    console.log(`🚀 ~ file: Payment.jsx:19 ~ paymentHandler ~ e`, e);
-    e.preventDefaut();
+    e.preventDefault();
 
-    if (!stripe || !elements) return;
+    if (!stripe || !elements) {
+      console.error("Stripe or Elements are not ready.");
+      return;
+    }
 
     setIsProcessingPayment(true);
 
     const response = await fetch("/.netlify/functions/create-payment-intent", {
-      method: "POST",
+      method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount: amount * 100 }),
     }).then((response) => response.json());
@@ -54,10 +57,10 @@ const Payment = () => {
 
     if (paymentResult.error) {
       alert(paymentResult.error);
+    } else if (paymentResult.paymentIntent.status === "succeeded") {
+      alert("Payment successful!");
     } else {
-      if (paymentResult.paymentIntent.status === "succeeded") {
-        alert("Payment successful!");
-      }
+      alert("Payment failed!");
     }
   };
 
@@ -78,7 +81,7 @@ const Payment = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Pay</Button>
+          <Button onClick={paymentHandler}>Pay</Button>
         </DialogActions>
       </Dialog>
     </PaymentFormContainer>
