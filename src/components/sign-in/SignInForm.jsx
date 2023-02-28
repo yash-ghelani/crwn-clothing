@@ -7,9 +7,10 @@ import {
 } from "../../utils/firebase/firebase";
 
 import Button, { BUTTON_TYPES } from "../button/Button";
+import { GoogleSignInButton } from "../button/button.style";
 import FormInput from "../forminput/FormInput";
 
-import {SignInContainer, FormButtons} from './signinform.style'
+import { SignInContainer, FormButtons } from "./signinform.style";
 
 const SignIn = () => {
   const defaultValues = {
@@ -92,7 +93,9 @@ const SignIn = () => {
         />
 
         <FormButtons>
-          <Button type="submit"> Sign In</Button>
+          <Button type="submit" buttonType={BUTTON_TYPES.inverted}>
+            Sign In
+          </Button>
           <Button
             type="button"
             buttonType={BUTTON_TYPES.google}

@@ -32,10 +32,12 @@ export const BaseButton = styled(Button)`
 `;
 
 export const GoogleSignInButton = styled(BaseButton)`
-  background-color: #4285f4;
-  color: white;
+  && {
+    background-color: #4285f4;
+    color: white;
+  }
 
-  &:hover {
+  &&:hover {
     background-color: white;
     color: #4285f4;
     border: none;
@@ -44,11 +46,13 @@ export const GoogleSignInButton = styled(BaseButton)`
 `;
 
 export const InvertedButton = styled(BaseButton)`
-  background-color: white;
-  color: black;
-  border: 1px solid black;
+  && {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
 
-  &:hover {
+  &&:hover {
     background-color: black;
     color: white;
     border: none;
@@ -56,8 +60,9 @@ export const InvertedButton = styled(BaseButton)`
 `;
 
 export const PaymentButton = styled(BaseButton)`
-  
-  width: 50%;
+  && {
+    width: 50%;
+  }
 `;
 
 export const Spinner = styled.div`

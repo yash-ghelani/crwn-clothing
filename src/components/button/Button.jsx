@@ -21,6 +21,7 @@ const Button = ({
   ...buttonProps
 }) => {
   const CustomButton = buttonType;
+  console.log(buttonType);
 
   return (
     <CustomButton disabled={isLoading} {...buttonProps}>
