@@ -92,7 +92,7 @@ const SignIn = () => {
         />
 
         <FormButtons>
-          <Button type="submit" buttonType={BUTTON_TYPES.inverted}>
+          <Button type="submit" buttonType={BUTTON_TYPES.base}>
             Sign In
           </Button>
           <Button
