@@ -61,9 +61,9 @@ export const InvertedButton = styled(BaseButton)`
 
 export const PaymentButton = styled(BaseButton)`
   && {
-    width: 50%;
+    width: 180px;
   }
-`;
+`; 
 
 export const Spinner = styled.div`
   display: inline-block;

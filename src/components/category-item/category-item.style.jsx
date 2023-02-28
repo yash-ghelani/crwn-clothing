@@ -36,7 +36,7 @@ export const Body = styled.div`
 
 export const CategoryContainer = styled.div`
   min-width: 30%;
-  height: 240px;
+  height: 40vh;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -54,6 +54,7 @@ export const CategoryContainer = styled.div`
     }
 
     & ${Body} {
+      transition: all 2s ease-in-out;
       opacity: 0.9;
     }
   }

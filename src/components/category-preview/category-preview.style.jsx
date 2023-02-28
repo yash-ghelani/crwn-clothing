@@ -4,10 +4,13 @@ export const CategoryPreviewContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 `;
 
 export const Title = styled.span`
-  font-size: 28px;
+  font-size: 40px;
+  text-decoration: solid;
   margin-bottom: 30px;
   cursor: pointer;
 `;

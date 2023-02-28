@@ -68,7 +68,7 @@ const Payment = () => {
     <PaymentFormContainer>
       <Button
         isLoading={isProcessingPayment}
-        buttonType={BUTTON_TYPES.base}
+        buttonType={BUTTON_TYPES.payment}
         onClick={handleOpen}
       >
         Pay Now
