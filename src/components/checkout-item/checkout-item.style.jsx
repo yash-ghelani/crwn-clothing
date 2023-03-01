@@ -13,7 +13,7 @@ export const Item = styled.div`
   justify-content: center;
 
   img {
-    width: 100%;
+    width: 70%;
   }
 `;
 

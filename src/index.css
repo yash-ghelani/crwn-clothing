@@ -11,6 +11,10 @@ code {
     monospace;
 }
 
+hr {
+  width: 93%;
+}
+
 a {
  text-decoration: none;
  color: black;

@@ -40,7 +40,7 @@ const Checkout = () => {
         </ColumnTitle>
       </CheckoutColumnTitles>
 
-      <hr />
+      <hr/>
 
       {cartItems.map((product) => (
         <CheckoutItem key={product.id} product={product} />
