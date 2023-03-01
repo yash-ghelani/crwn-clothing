@@ -36,8 +36,6 @@ const Payment = () => {
 
     setIsProcessingPayment(true);
 
-    console.log("Reaches here okay 0");
-
     const response = await fetch("/.netlify/functions/create-payment-intent", {
       method: "post",
       headers: { "Content-Type": "application/json" },
