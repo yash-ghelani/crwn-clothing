@@ -66,4 +66,8 @@ export const CategoryContainer = styled.div`
   &:last-child {
     margin-left: 7.5px;
   }
+
+  @media (max-width: 768px) {
+    min-width: 95%;
+  }
 `;

@@ -8,11 +8,12 @@ export const CheckoutItemContainer = styled.div`
 export const Item = styled.div`
   display: flex;
   align-items: center;
-  width: 23%;
+  width: 20%;
   padding: 5px;
+  justify-content: center;
 
   img {
-    width: 90%;
+    width: 100%;
   }
 `;
 
@@ -20,7 +21,7 @@ export const Remove = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 8%;
+  width: 20%;
   cursor: pointer;
 `;
 

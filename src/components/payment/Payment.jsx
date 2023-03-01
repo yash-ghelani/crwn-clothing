@@ -69,7 +69,6 @@ const Payment = () => {
 
   return (
     <PaymentFormContainer>
-
       <Button buttonType={BUTTON_TYPES.base} onClick={handleOpen}>
         Pay Now
       </Button>
@@ -80,8 +79,14 @@ const Payment = () => {
           <CardElement />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button isLoading={isProcessingPayment} onClick={paymentHandler}>
+          <Button buttonType={BUTTON_TYPES.payment} onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button
+            buttonType={BUTTON_TYPES.payment}
+            isLoading={isProcessingPayment}
+            onClick={paymentHandler}
+          >
             Pay
           </Button>
         </DialogActions>

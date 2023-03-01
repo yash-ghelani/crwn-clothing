@@ -24,19 +24,19 @@ const Checkout = () => {
     <CheckoutProductsContainer>
       <CheckoutColumnTitles>
         <ColumnTitle>
-          <span>Product</span>
+          Product
         </ColumnTitle>
         <ColumnTitle>
-          <span>Description</span>
+          Description
         </ColumnTitle>
         <ColumnTitle>
-          <span>Quantity</span>
+          Quantity
         </ColumnTitle>
         <ColumnTitle>
-          <span>Price</span>
+          Price
         </ColumnTitle>
         <ColumnTitle>
-          <span>Remove</span>
+          Remove
         </ColumnTitle>
       </CheckoutColumnTitles>
 

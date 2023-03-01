@@ -4,6 +4,7 @@ export const CategoryPreviewContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  width: 90%;
   max-width: 1100px;
   margin: 0 auto;
 `;

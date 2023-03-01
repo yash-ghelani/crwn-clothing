@@ -3,12 +3,11 @@ import { Button } from "@mui/material";
 
 export const BaseButton = styled(Button)`
   && {
-    min-width: 165px;
+    min-width: 140px;
     width: auto;
     height: 50px;
     letter-spacing: 0.5px;
     line-height: 50px;
-    padding: 0 25px;
     font-size: 15px;
     background-color: black;
     color: white;
@@ -61,7 +60,8 @@ export const InvertedButton = styled(BaseButton)`
 
 export const PaymentButton = styled(BaseButton)`
   && {
-    width: 180px;
+    min-width: 90px;
+    width: 200px;
   }
 `;
 

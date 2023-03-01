@@ -1,8 +1,16 @@
 import styled from "styled-components";
 
 export const CheckoutProductsContainer = styled.div`
+  padding-top: 40px;
+  width: 90%;
   margin: auto;
-  max-width: 700px;
+  max-width: 1100px;
+  margin-bottom: 40px;
+  font-size: 1.2rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
 `;
 
 export const CheckoutColumnTitles = styled.div`
@@ -11,18 +19,14 @@ export const CheckoutColumnTitles = styled.div`
 `;
 
 export const ColumnTitle = styled.div`
-  padding: 5px;
-  width: 23%;
-
-  &:last-child {
-    width: 8%;
-  }
+  width: 20%;
+  text-align: center;
 `;
 
 export const CheckoutTotal = styled.div`
   display: flex;
   justify-content: flex-end;
-  font-size: 42px;
+  font-size: 4vh;
   margin: 20px 0;
 `;
 
