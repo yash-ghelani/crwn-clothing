@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@mui/material";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import { selectCartTotal } from "../../store/cart/cart-selector";
@@ -10,7 +15,6 @@ import Button, { BUTTON_TYPES } from "../button/Button";
 import { PaymentFormContainer } from "./payment-style";
 
 const Payment = () => {
-
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,17 +36,15 @@ const Payment = () => {
 
     setIsProcessingPayment(true);
 
+    console.log("Reaches here okay 0");
+
     const response = await fetch("/.netlify/functions/create-payment-intent", {
       method: "post",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 10000 }),
+      body: JSON.stringify({ amount: amount * 100 }),
     }).then((response) => response.json());
 
-    console.log(response);
-
     const client_secret = response.paymentIntent.client_secret;
-
-    console.log(`client_secret`, client_secret);
 
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
@@ -56,8 +58,9 @@ const Payment = () => {
     setIsProcessingPayment(false);
 
     if (paymentResult.error) {
-      alert(paymentResult.error);
+      alert(`Payment Failed: ${paymentResult.error.message}`);
     } else if (paymentResult.paymentIntent.status === "succeeded") {
+      handleClose();
       alert("Payment successful!");
     } else {
       alert("Payment failed!");
@@ -66,11 +69,8 @@ const Payment = () => {
 
   return (
     <PaymentFormContainer>
-      <Button
-        isLoading={isProcessingPayment}
-        buttonType={BUTTON_TYPES.payment}
-        onClick={handleOpen}
-      >
+
+      <Button buttonType={BUTTON_TYPES.base} onClick={handleOpen}>
         Pay Now
       </Button>
 
@@ -81,7 +81,9 @@ const Payment = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={paymentHandler}>Pay</Button>
+          <Button isLoading={isProcessingPayment} onClick={paymentHandler}>
+            Pay
+          </Button>
         </DialogActions>
       </Dialog>
     </PaymentFormContainer>

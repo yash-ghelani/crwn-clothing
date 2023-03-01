@@ -63,7 +63,7 @@ export const PaymentButton = styled(BaseButton)`
   && {
     width: 180px;
   }
-`; 
+`;
 
 export const Spinner = styled.div`
   display: inline-block;
@@ -72,7 +72,7 @@ export const Spinner = styled.div`
   border: 3px solid rgba(195, 195, 195, 0.6);
   border-radius: 50%;
   animation: spin 1s ease-in-out infinite;
-  border-top-color: #676767;
+  border-top-color: #3f3f3f;
   @keyframes spin {
     to {
       transform: rotate(360deg);
